@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="https://thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Bank Management System</title>
+</head>
+<body>
+<h1>Bank Management System</h1>
+<hr>
+<h3 th:text="'Welcome '+${session.customer.customerName}+'!'"></h3>
+<table border="1">
+	<tr> <!-- the table row with the headers -->
+		<th>Account ID</th>
+		<th>Customer Name</th>
+		<th>Address</th>
+		<th>Phone Number</th>
+		<th>Balance</th>
+	</tr>
+	<tr> <!-- the table row with the data -->
+		<td th:text="${session.customer.accountId}"></td>
+		<td th:text="${session.customer.customerName}"></td>
+		<td th:text="${session.customer.address}"></td>
+		<td th:text="${session.customer.phoneNumber}"></td>
+		<td th:text="${session.customer.balance}"></td>
+	</tr>
+</table>
+<br><br>
+<a href="/index">Return to Menu</a>
+<a href="./">Logout</a>
+</body>
+</html>

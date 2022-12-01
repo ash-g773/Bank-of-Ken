@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="https://thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Bank Management System</title>
+</head>
+<body>
+<h1>Bank Management System</h1>
+<hr>
+<h3 th:text="'Welcome '+${session.customer.customerName}+'!'"></h3>
+<hr>
+<a href="/showAccountDetailsPage">Show Account Details</a><br><br>
+<a href="/transferFundsInputPage">Transfer Funds</a><br><br>
+</body>
+</html>

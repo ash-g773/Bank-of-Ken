@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="https://thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Bank Management System</title>
+</head>
+<body>
+<h1>Bank Management System</h1>
+<hr>
+<h3 th:text="'Welcome ' + ${session.customer.customerName} + ' !'"></h3>
+<form action="./transferFunds">
+		Enter Account ID to transfer to: <input type="text" name="transferId"><br><br>
+		Enter amount to transfer: <input type="text" name="transferAmount"><br><br>
+		Please enter your ID to confirm: <input type="text" name="userId"><br><br>
+		<input type="submit" value="Transfer">
+</form>
+<br><br>
+<h2 th:text="${message}" style="color: rgb(128, 0, 64)"></h2>
+<br><br>
+<a href="./index">Return to Menu</a>
+<a href="./">Logout</a>
+</body>
+</html>
