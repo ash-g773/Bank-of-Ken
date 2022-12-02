@@ -61,9 +61,9 @@ public class CustomerController {
 	}
 	
 	@RequestMapping("/transferFunds")
-	public ModelAndView transferFundsController(@RequestParam("userId") Integer userId, @RequestParam("transferId") Integer transferId, @RequestParam("transferAmount") Double transferAmount) {
+	public ModelAndView transferFundsController(@RequestParam("transferId") Integer transferId, @RequestParam("transferAmount") Double transferAmount, HttpSession session) {
 		ModelAndView modelAndView = new ModelAndView();
-		Customer customerDetails = service.searchById(userId);
+		Customer customerDetails = (Customer) session.getAttribute("customer");
 		
 		//checking if account exists
 		if(service.searchById(transferId)==null) {

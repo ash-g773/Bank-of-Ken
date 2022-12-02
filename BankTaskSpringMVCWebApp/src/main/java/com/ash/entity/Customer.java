@@ -13,6 +13,8 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 @Entity
+
+//@Table(name = "MySQL Table Name if Different to Class)
 public class Customer {
 	
 	@Id
@@ -22,5 +24,6 @@ public class Customer {
 	private String address;
 	private String phoneNumber;
 	private double balance;
+	//@Column(name = "name of column in mysql if its different)
 	private String userPassword; 
 }
