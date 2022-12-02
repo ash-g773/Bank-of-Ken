@@ -6,9 +6,10 @@
 </head>
 <body>
 <h1>Bank Management System</h1>
-<form action="#" th:action="@{./userLoginPage}" th:object="${customer}">
+<!-- you can do this regularly? and not use # i.e. set a session object and stuff and not use model attribute-->
+<form action="#" th:action="@{./userLoginPage}" th:object="${customer}" th:method="post"> <!-- this method needs to be post otherwise the password will be in the request -->
 		Enter Account ID: <input type="text" th:field="*{accountId}"><br><br>
-		Enter Password: <input type="password" th:field="*{userPassword}">
+		Enter Password: <input type="password" th:field="*{userPassword}"> <!-- input type password creates a hidden field i.e. the input is dots when u typed, not shown on screen -->
 		<input type="submit" value="Login">
 </form>
 <br><br>

@@ -26,6 +26,8 @@ public class CustomerController {
 		return new ModelAndView("LoginPage", "customer", new Customer());
 	}
 	
+	//you can also do this method without using model attribute / setting a session attribute in the html - you can pass in http session
+	//and set the session attribute in here
 	@RequestMapping("/userLoginPage")
 	public ModelAndView loginPageController(@ModelAttribute("customer") Customer customer, HttpSession session) {
 		ModelAndView modelAndView = new ModelAndView();
@@ -65,6 +67,7 @@ public class CustomerController {
 		ModelAndView modelAndView = new ModelAndView();
 		Customer customerDetails = (Customer) session.getAttribute("customer");
 		
+		//you can do the following checks in the service method transfer funds as well
 		//checking if account exists
 		if(service.searchById(transferId)==null) {
 			modelAndView.addObject("message", "Account with ID " + transferId + " does not exist!");
@@ -73,10 +76,15 @@ public class CustomerController {
 		} else if (customerDetails.getBalance() < transferAmount) {
 			modelAndView.addObject("message", "Insufficient funds!");
 			modelAndView.setViewName("TransferFundsInputPage");		
+		//checking amount is logical
+		} else if (transferAmount <= 0) {
+			modelAndView.addObject("message", "Please transfer an amount more than 0!");
+			modelAndView.setViewName("TransferFundsInputPage");	
 		//confirming + carrying out transaction once these are confirmed
 		} else {
 			service.transferFunds(customerDetails.getAccountId(), transferId, transferAmount);
 			modelAndView.addObject("message", "Succesfully transferred! Transfer again?");
+			session.setAttribute("customer", customerDetails); //resetting the customer attribute values cos now its updated
 			modelAndView.setViewName("TransferFundsInputPage");			
 		}
 		
